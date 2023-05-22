@@ -1,0 +1,30 @@
+<div class="wrapper">
+	<div class="block-btn">
+		<button
+		 	class="button"
+		 	(click)="increase()"
+		>
+			+
+		</button>
+		<button
+		 	class="button"
+		 	(click)="clear()"
+		  	[disabled]="cannotDecrease$ | async">
+			0
+		</button>
+		<button
+			class="button"
+			(click)="decrease()"
+			[disabled]="cannotDecrease$ | async"
+		>
+			-
+		</button>
+	</div>
+	<p class="counter">Счетчик: {{ count$ | async }}</p>
+	<p 
+		*ngIf="updateAt$ | async" 
+		class="counter"
+	>
+		Последнее обновление {{ updateAt$ | async | date : "dd.MM.yyyy года в HH:mm:ss" }}
+	</p>
+</div>
